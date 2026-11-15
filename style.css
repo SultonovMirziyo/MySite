@@ -35,6 +35,7 @@ nav a {
     color: white;
     text-decoration: none;
     font-size: 16px;
+    transition: 0.3s;
 }
 
 nav a:hover {
@@ -67,36 +68,29 @@ button {
     background: #38bdf8;
     font-size: 16px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-/* CARDS */
+button:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+/* CREATOR */
 
 .cards {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    padding: 70px 8%;
-}
-
-.card {
-    background: #1e293b;
-    padding: 35px;
-    width: 300px;
-    border-radius: 15px;
+    align-items: center;
+    padding: 100px 20px;
+    min-height: 300px;
     text-align: center;
 }
 
-.card h2 {
+.cards h1 {
+    font-size: 42px;
     color: #38bdf8;
-    font-size: 35px;
-}
-
-.card h3 {
-    margin: 15px 0;
-}
-
-.card p {
-    color: #cbd5e1;
+    text-shadow: 0 0 20px #38bdf8;
 }
 
 /* FOOTER */
@@ -105,9 +99,10 @@ footer {
     text-align: center;
     padding: 25px;
     background: #020617;
+    color: #cbd5e1;
 }
 
-/* TELEFON UCHUN */
+/* MOBILE */
 
 @media (max-width: 768px) {
 
@@ -134,14 +129,8 @@ footer {
         font-size: 16px;
     }
 
-    .cards {
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 20px;
+    .cards h1 {
+        font-size: 30px;
     }
 
-    .card {
-        width: 100%;
-        max-width: 350px;
-    }
 }
