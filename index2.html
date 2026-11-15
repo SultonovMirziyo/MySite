@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Creator | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
 
+    <div class="login-box">
+        <div class="login-logo">AI</div>
+
+        <h1>Welcome Back</h1>
+        <p>AI Creator platformasiga xush kelibsiz</p>
+
+        <form id="loginForm">
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your code"
+                maxlength="4"
+                inputmode="numeric"
+                required
+            >
+
+            <button type="submit">Kirish →</button>
+        </form>
+
+        <div id="error"></div>
+
+        <span class="login-footer">© 2026 AI Creator</span>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            let code = document.getElementById("password").value;
+
+            if (code === "0000") {
+                window.location.href = "index.html";
+            } else {
+                document.getElementById("error").textContent =
+                    "Noto'g'ri kod! Qayta urinib ko'ring.";
+            }
+        });
+    </script>
+
+</body>
+</html>
