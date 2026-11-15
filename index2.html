@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saytga kirish</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #071426, #123b5c);
+            font-family: Arial, sans-serif;
+        }
+
+        .login {
+            width: 350px;
+            padding: 40px;
+            background: #10243d;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 200, 255, 0.3);
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #00c8ff;
+            border-radius: 8px;
+            background: #071426;
+            color: white;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #00c8ff;
+            color: #071426;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: white;
+        }
+
+        #error {
+            color: #ff5555;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login">
+        <h2>Saytga kirish</h2>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Parolni kiriting"
+        >
+
+        <button onclick="login()">Kirish</button>
+
+        <p id="error"></p>
+    </div>
+
+    <script>
+        function login() {
+            let password = document.getElementById("password").value;
+
+            if (password === "0000") {
+                window.location.href = "index.html";
+            } else {
+                document.getElementById("error").innerText =
+                    "Parol noto'g'ri!";
+            }
+        }
+
+        document.getElementById("password").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                login();
+            }
+        });
+    </script>
+
+</body>
+</html>
