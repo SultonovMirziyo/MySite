@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DO'STLIK SAVDO MARKAZI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1 class="logo">DO'STLIK SAVDO MARKAZI</h1>
+
+    <h2 class="salom">Xush kelibsiz, <span id="ism"></span>!</h2>
+
+    <div class="mahsulotlar">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab" alt="iPhone">
+            <h2>iPhone 18 Pro Max</h2>
+            <p>Narxi: 25 000 000 so'm</p>
+            <button onclick="savatga(0)">SAVATGA</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="iPhone">
+            <h2>iPhone 17 Pro Max</h2>
+            <p>Narxi: 22 000 000 so'm</p>
+            <button onclick="savatga(1)">SAVATGA</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd" alt="iPhone">
+            <h2>iPhone 16 Pro Max</h2>
+            <p>Narxi: 18 000 000 so'm</p>
+            <button onclick="savatga(2)">SAVATGA</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97" alt="iPhone">
+            <h2>iPhone 15 Pro Max</h2>
+            <p>Narxi: 15 000 000 so'm</p>
+            <button onclick="savatga(3)">SAVATGA</button>
+        </div>
+
+    </div>
+
+    <div class="savat">
+        <h2>Savat: <span id="son">0</span> ta</h2>
+        <button onclick="sotibolish()">SOTIB OLISH</button>
+    </div>
+
+    <script>
+        document.getElementById("ism").innerText =
+            localStorage.getItem("ism") || "Mehmon";
+
+        let mahsulotlar = [
+            {nom: "iPhone 18 Pro Max", narx: 25000000},
+            {nom: "iPhone 17 Pro Max", narx: 22000000},
+            {nom: "iPhone 16 Pro Max", narx: 18000000},
+            {nom: "iPhone 15 Pro Max", narx: 15000000}
+        ];
+
+        let savat = JSON.parse(localStorage.getItem("savat")) || [0,0,0,0];
+
+        function yangilash() {
+            document.getElementById("son").innerText =
+                savat.reduce((a,b) => a+b, 0);
+        }
+
+        function savatga(index) {
+            savat[index]++;
+            localStorage.setItem("savat", JSON.stringify(savat));
+            yangilash();
+        }
+
+        function sotibolish() {
+            if (savat.reduce((a,b) => a+b, 0) === 0) {
+                alert("Avval mahsulot tanlang!");
+                return;
+            }
+
+            window.location.href = "index3.html";
+        }
+
+        yangilash();
+    </script>
+
+</body>
+</html>
