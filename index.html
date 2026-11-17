@@ -1,37 +1,40 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sultonov Mirziyo | Creator</title>
+    <title>DO'STLIK</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">MY WEBSITE</div>
+    <div class="login">
+        <h1>DO'STLIK</h1>
 
-        <nav>
-            <a href="#">Bosh sahifa</a>
-            <a href="#">Biz haqimizda</a>
-            <a href="#">Xizmatlar</a>
-            <a href="#">Aloqa</a>
-        </nav>
-    </header>
+        <input type="text" id="ism" placeholder="Ismingiz">
 
-    <section class="hero">
-        <h1>Bizning saytimizga xush kelibsiz!</h1>
-        <p>Bu mening shaxsiy veb-saytim.</p>
-        <button>Batafsil</button>
-    </section>
+        <input type="tel" id="telefon" placeholder="Telefon nomer">
 
-    <section class="cards">
-        <h1>Sultonov Mirziyo Creator</h1>
-    </section>
+        <button onclick="boshlash()">BOSHLASH</button>
+    </div>
 
-    <footer>
-        <p>© 2026 Sultonov Mirziyo. Barcha huquqlar himoyalangan.</p>
-    </footer>
+    <script>
+        function boshlash() {
+            let ism = document.getElementById("ism").value;
+            let telefon = document.getElementById("telefon").value;
+
+            if (ism === "" || telefon === "") {
+                alert("Iltimos, hamma joyni to'ldiring!");
+                return;
+            }
+
+            localStorage.setItem("ism", ism);
+            localStorage.setItem("telefon", telefon);
+
+            window.location.href = "index2.html";
+        }
+    </script>
 
 </body>
 </html>
