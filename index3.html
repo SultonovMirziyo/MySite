@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyurtma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="buyurtma">
+        <h1>DO'STLIK SAVDO MARKAZI</h1>
+
+        <h2>Buyurtma ma'lumotlari</h2>
+
+        <p>Telefon nomer:</p>
+        <h2>74-323-23-23</h2>
+
+        <p>Mijoz: <span id="ism"></span></p>
+
+        <h2>Tanlangan mahsulotlar:</h2>
+
+        <div id="royxat"></div>
+
+        <h2 class="jami">Jami: <span id="jami">0</span> so'm</h2>
+
+        <button onclick="tasdiqlash()">BUYURTMANI TASDIQLASH</button>
+    </div>
+
+    <script>
+        let mahsulotlar = [
+            {nom: "iPhone 18 Pro Max", narx: 25000000},
+            {nom: "iPhone 17 Pro Max", narx: 22000000},
+            {nom: "iPhone 16 Pro Max", narx: 18000000},
+            {nom: "iPhone 15 Pro Max", narx: 15000000}
+        ];
+
+        let savat = JSON.parse(localStorage.getItem("savat")) || [0,0,0,0];
+
+        document.getElementById("ism").innerText =
+            localStorage.getItem("ism") || "Mehmon";
+
+        let jami = 0;
+        let royxat = document.getElementById("royxat");
+
+        mahsulotlar.forEach((mahsulot, index) => {
+            if (savat[index] > 0) {
+                let narx = mahsulot.narx * savat[index];
+                jami += narx;
+
+                royxat.innerHTML += `
+                    <p>${mahsulot.nom} — ${savat[index]} ta</p>
+                    <p>${narx.toLocaleString("uz-UZ")} so'm</p>
+                    <hr>
+                `;
+            }
+        });
+
+        document.getElementById("jami").innerText =
+            jami.toLocaleString("uz-UZ");
+
+        function tasdiqlash() {
+            alert("Buyurtmangiz qabul qilindi!");
+        }
+    </script>
+
+</body>
+</html>
