@@ -2,68 +2,106 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buyurtma</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buyurtma - DO'STLIK</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="buyurtma">
-        <h1>DO'STLIK SAVDO MARKAZI</h1>
+<header class="topbar">
+    <h1>DO'STLIK SAVDO MARKAZI</h1>
+</header>
 
-        <h2>Buyurtma ma'lumotlari</h2>
+<div class="checkout">
+    <h1>🛒 SAVAT</h1>
 
-        <p>Telefon nomer:</p>
-        <h2>74-323-23-23</h2>
+    <div id="items"></div>
 
-        <p>Mijoz: <span id="ism"></span></p>
+    <hr>
 
-        <h2>Tanlangan mahsulotlar:</h2>
+    <h2 id="total"></h2>
 
-        <div id="royxat"></div>
+    <h3>Mijoz ma'lumotlari</h3>
+    <p>Ism: <span id="customer"></span></p>
+    <p>Telefon: <span id="customerPhone"></span></p>
 
-        <h2 class="jami">Jami: <span id="jami">0</span> so'm</h2>
+    <h3>Do'kon telefon raqami</h3>
+    <h2>+998 93 340 20 80</h2>
 
-        <button onclick="tasdiqlash()">BUYURTMANI TASDIQLASH</button>
-    </div>
+    <button onclick="sendOrder()">BUYURTMA BERISH</button>
 
-    <script>
-        let mahsulotlar = [
-            {nom: "iPhone 18 Pro Max", narx: 25000000},
-            {nom: "iPhone 17 Pro Max", narx: 22000000},
-            {nom: "iPhone 16 Pro Max", narx: 18000000},
-            {nom: "iPhone 15 Pro Max", narx: 15000000}
-        ];
+    <br><br>
+    <button onclick="location.href='index2.html'">XARIDNI DAVOM ETTIRISH</button>
+</div>
 
-        let savat = JSON.parse(localStorage.getItem("savat")) || [0,0,0,0];
+<script>
+let cart = JSON.parse(localStorage.getItem("savat")) || [];
 
-        document.getElementById("ism").innerText =
-            localStorage.getItem("ism") || "Mehmon";
+document.getElementById("customer").textContent =
+    localStorage.getItem("ism") || "Mehmon";
 
-        let jami = 0;
-        let royxat = document.getElementById("royxat");
+document.getElementById("customerPhone").textContent =
+    localStorage.getItem("telefon") || "Kiritilmagan";
 
-        mahsulotlar.forEach((mahsulot, index) => {
-            if (savat[index] > 0) {
-                let narx = mahsulot.narx * savat[index];
-                jami += narx;
+let total = 0;
+let items = document.getElementById("items");
 
-                royxat.innerHTML += `
-                    <p>${mahsulot.nom} — ${savat[index]} ta</p>
-                    <p>${narx.toLocaleString("uz-UZ")} so'm</p>
-                    <hr>
-                `;
-            }
-        });
+cart.forEach((item,index) => {
+    let price = item.price * item.qty;
+    let creditTotal = item.monthly * item.credit * item.qty;
 
-        document.getElementById("jami").innerText =
-            jami.toLocaleString("uz-UZ");
+    total += creditTotal;
 
-        function tasdiqlash() {
-            alert("Buyurtmangiz qabul qilindi!");
-        }
-    </script>
+    items.innerHTML += `
+        <div class="order-item">
+            <h3>${item.name}</h3>
+            <p>Rang: ${item.color}</p>
+            <p>Soni: ${item.qty} ta</p>
+            <p>Naqd narxi: ${price.toLocaleString("uz-UZ")} so'm</p>
+            <p>Kredit: ${item.credit} oy</p>
+            <p>Har oylik: ${item.monthly.toLocaleString("uz-UZ")} so'm</p>
+            <p>Jami kredit: ${creditTotal.toLocaleString("uz-UZ")} so'm</p>
+            <button onclick="removeItem(${index})">O'CHIRISH</button>
+        </div>
+    `;
+});
+
+document.getElementById("total").textContent =
+    "Umumiy kredit summasi: " + total.toLocaleString("uz-UZ") + " so'm";
+
+function removeItem(index) {
+    cart.splice(index,1);
+    localStorage.setItem("savat",JSON.stringify(cart));
+    location.reload();
+}
+
+function sendOrder() {
+    if(cart.length === 0) {
+        alert("Savatingiz bo'sh!");
+        return;
+    }
+
+    let message = "DO'STLIK SAVDO MARKAZI BUYURTMASI\n";
+    message += "Mijoz: " + (localStorage.getItem("ism") || "Mehmon") + "\n";
+    message += "Mijoz telefoni: " + (localStorage.getItem("telefon") || "Yo'q") + "\n\n";
+
+    cart.forEach(item => {
+        message += item.name + "\n";
+        message += "Rang: " + item.color + "\n";
+        message += "Soni: " + item.qty + "\n";
+        message += "Kredit: " + item.credit + " oy\n";
+        message += "Oylik to'lov: " +
+            item.monthly.toLocaleString("uz-UZ") + " so'm\n\n";
+    });
+
+    message += "JAMI: " + total.toLocaleString("uz-UZ") + " so'm";
+
+    let smsURL = "sms:+998933402080?body=" + encodeURIComponent(message);
+
+    window.location.href = smsURL;
+}
+</script>
 
 </body>
 </html>
