@@ -6,139 +6,290 @@
 }
 
 body {
-    background-color: #f2f2f2;
+    background: #f4f4f4;
     font-family: Arial, sans-serif;
+    color: #222;
 }
 
-.login {
-    width: 400px;
-    margin: 100px auto;
-    padding: 35px;
-    background-color: white;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 0 15px gray;
+.topbar {
+    background: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-.login h1 {
+.topbar h1 {
     color: red;
-    margin-bottom: 30px;
+    font-size: 25px;
 }
 
-input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 20px;
-    border: 1px solid gray;
-    border-radius: 7px;
-    font-size: 16px;
-}
-
-button {
-    background-color: red;
+.cart {
+    background: red;
     color: white;
-    border: none;
-    padding: 13px 25px;
-    border-radius: 7px;
+    padding: 12px 20px;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
 }
 
-button:hover {
-    background-color: darkred;
-}
-
-.logo {
+.welcome {
     text-align: center;
-    color: red;
-    padding: 30px;
+    margin: 30px;
 }
 
-.salom {
+.section-title {
     text-align: center;
-    margin-bottom: 30px;
+    margin: 30px;
+    font-size: 30px;
 }
 
-.mahsulotlar {
+.products {
     display: flex;
     justify-content: center;
-    gap: 25px;
     flex-wrap: wrap;
+    gap: 25px;
     padding: 20px;
 }
 
-.card {
-    background-color: white;
-    width: 250px;
+.product-card {
+    width: 260px;
+    background: white;
+    border-radius: 15px;
     padding: 20px;
     text-align: center;
-    border-radius: 12px;
-    box-shadow: 0 0 10px gray;
+    box-shadow: 0 5px 15px #ddd;
+    cursor: pointer;
+    transition: .3s;
 }
 
-.card img {
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px #bbb;
+}
+
+.product-card img {
     width: 100%;
-    height: 220px;
+    height: 240px;
     object-fit: contain;
 }
 
-.card h2 {
-    font-size: 19px;
+.product-card h3 {
     margin: 15px 0;
 }
 
-.card p {
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.savat {
-    text-align: right;
-    padding: 30px 50px;
-}
-
-.savat h2 {
-    margin-bottom: 15px;
-}
-
-.buyurtma {
-    background-color: white;
-    max-width: 650px;
-    margin: 50px auto;
-    padding: 35px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px gray;
-}
-
-.buyurtma h1 {
+.product-card p {
     color: red;
-    text-align: center;
-    margin-bottom: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
-.buyurtma h2 {
+button {
+    background: red;
+    color: white;
+    padding: 13px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: .2s;
+}
+
+button:hover {
+    background: darkred;
+    transform: scale(1.03);
+}
+
+/* Telefon ichki sahifasi */
+
+.detail {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px #ddd;
+}
+
+.gallery {
+    text-align: center;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.gallery img {
+    width: 100%;
+    height: 430px;
+    object-fit: contain;
+    transition: .3s;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.hint {
+    color: gray;
+    margin: 10px;
+}
+
+.views {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.views button {
+    font-size: 13px;
+    padding: 10px 15px;
+}
+
+.info h1 {
+    font-size: 30px;
+    margin: 15px 0;
+}
+
+.info h2 {
+    color: red;
     margin: 20px 0;
 }
 
-.buyurtma p {
-    margin: 12px 0;
-    font-size: 17px;
+.info h3 {
+    margin: 25px 0 12px;
 }
 
-.jami {
+.colors {
+    display: flex;
+    gap: 15px;
+}
+
+.color {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid white;
+    outline: 1px solid #aaa;
+    padding: 0;
+}
+
+.black {
+    background: #222;
+}
+
+.silver {
+    background: silver;
+}
+
+.orange {
+    background: #c47a43;
+}
+
+#colorName {
+    margin-top: 12px;
+}
+
+.credit-options {
+    display: flex;
+    gap: 12px;
+}
+
+.credit-options button {
+    background: #555;
+}
+
+.credit-options button.active {
+    background: red;
+}
+
+.credit-box {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+}
+
+.credit-box h2 {
     color: red;
 }
 
-@media (max-width: 600px) {
-    .login {
-        width: 90%;
+.add-cart {
+    width: 100%;
+    font-size: 18px;
+    padding: 17px;
+}
+
+.added {
+    background: green;
+}
+
+/* Savat */
+
+.checkout {
+    max-width: 750px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #ddd;
+}
+
+.checkout h1 {
+    color: red;
+    margin-bottom: 25px;
+}
+
+.checkout h2,
+.checkout h3 {
+    margin: 20px 0;
+}
+
+.order-item {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+}
+
+.order-item p {
+    margin: 10px 0;
+}
+
+.checkout button {
+    margin-top: 15px;
+}
+
+/* Telefon va planshet */
+
+@media (max-width: 750px) {
+    .detail {
+        grid-template-columns: 1fr;
+        margin: 15px;
+        gap: 20px;
     }
 
-    .savat {
-        text-align: center;
+    .gallery img {
+        height: 300px;
     }
 
-    .buyurtma {
-        width: 95%;
+    .topbar h1 {
+        font-size: 18px;
+    }
+
+    .checkout {
+        margin: 15px;
+        padding: 20px;
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 350px;
     }
 }
