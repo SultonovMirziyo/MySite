@@ -1,40 +1,81 @@
 
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DO'STLIK</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DO'STLIK SAVDO MARKAZI</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="login">
-        <h1>DO'STLIK</h1>
+<header class="topbar">
+    <h1>DO'STLIK SAVDO MARKAZI</h1>
+    <div class="cart" onclick="location.href='index3.html'">
+        🛒 <span id="cartCount">0</span>
+    </div>
+</header>
 
-        <input type="text" id="ism" placeholder="Ismingiz">
+<h2 class="welcome">Xush kelibsiz, <span id="ism"></span>!</h2>
+<h2 class="section-title">iPhone telefonlari</h2>
 
-        <input type="tel" id="telefon" placeholder="Telefon nomer">
+<div class="products">
 
-        <button onclick="boshlash()">BOSHLASH</button>
+    <div class="product-card" onclick="openProduct(0)">
+        <img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-1.jpg" alt="iPhone 18 Pro Max">
+        <h3>iPhone 18 Pro Max</h3>
+        <p>25 000 000 so'm</p>
+        <button>BATAFSIL</button>
     </div>
 
-    <script>
-        function boshlash() {
-            let ism = document.getElementById("ism").value;
-            let telefon = document.getElementById("telefon").value;
+    <div class="product-card" onclick="openProduct(1)">
+        <img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-max-1.jpg" alt="iPhone 17 Pro Max">
+        <h3>iPhone 17 Pro Max</h3>
+        <p>22 000 000 so'm</p>
+        <button>BATAFSIL</button>
+    </div>
 
-            if (ism === "" || telefon === "") {
-                alert("Iltimos, hamma joyni to'ldiring!");
-                return;
-            }
+    <div class="product-card" onclick="openProduct(2)">
+        <img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-1.jpg" alt="iPhone 16 Pro Max">
+        <h3>iPhone 16 Pro Max</h3>
+        <p>18 000 000 so'm</p>
+        <button>BATAFSIL</button>
+    </div>
 
-            localStorage.setItem("ism", ism);
-            localStorage.setItem("telefon", telefon);
+    <div class="product-card" onclick="openProduct(3)">
+        <img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg" alt="iPhone 15 Pro Max">
+        <h3>iPhone 15 Pro Max</h3>
+        <p>15 000 000 so'm</p>
+        <button>BATAFSIL</button>
+    </div>
 
-            window.location.href = "index2.html";
-        }
-    </script>
+</div>
+
+<script>
+const products = [
+    {name:"iPhone 18 Pro Max",price:25000000},
+    {name:"iPhone 17 Pro Max",price:22000000},
+    {name:"iPhone 16 Pro Max",price:18000000},
+    {name:"iPhone 15 Pro Max",price:15000000}
+];
+
+document.getElementById("ism").textContent =
+    localStorage.getItem("ism") || "Mehmon";
+
+function openProduct(index) {
+    localStorage.setItem("selectedProduct", index);
+    location.href = "product.html";
+}
+
+function updateCart() {
+    let cart = JSON.parse(localStorage.getItem("savat")) || [];
+    document.getElementById("cartCount").textContent =
+        cart.reduce((sum,item) => sum + item.qty, 0);
+}
+
+updateCart();
+</script>
 
 </body>
 </html>
