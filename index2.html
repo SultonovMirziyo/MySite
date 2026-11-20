@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telefonlar | DO‘STLIK</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">DO‘STLIK<span>.</span></a>
+
+    <nav class="navbar">
+        <a href="index.html">Bosh sahifa</a>
+        <a href="index2.html" class="active">Telefonlar</a>
+        <a href="index.html#about">Biz haqimizda</a>
+        <a href="index.html#contact">Aloqa</a>
+    </nav>
+
+    <a href="index3.html" class="cart">
+        🛒 Savat <span id="cart-count">0</span>
+    </a>
+</header>
+
+<section class="catalog-hero">
+    <p>DO‘STLIK ONLINE STORE</p>
+    <h1>BIZNING <span>TELEFONLAR</span></h1>
+    <p>O‘zingizga yoqqan smartfonni tanlang!</p>
+</section>
+
+<section class="catalog">
+
+    <div class="catalog-top">
+        <div>
+            <h2>Barcha telefonlar</h2>
+            <p>O‘zingiz uchun eng yaxshisini tanlang</p>
+        </div>
+
+        <span id="product-count">20 ta telefon</span>
+    </div>
+
+    <div class="filters">
+        <input
+            type="search"
+            id="search"
+            placeholder="🔍 Telefon nomini qidiring..."
+        >
+
+        <select id="brand-filter">
+            <option value="all">Barcha brendlar</option>
+            <option value="Apple">Apple</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Xiaomi">Xiaomi</option>
+            <option value="Redmi">Redmi</option>
+        </select>
+
+        <select id="sort-filter">
+            <option value="default">Saralash</option>
+            <option value="low">Arzonidan qimmatiga</option>
+            <option value="high">Qimmatidan arzoniga</option>
+        </select>
+    </div>
+
+    <div class="products-grid" id="products-list">
+
+        <div class="loading">Telefonlar yuklanmoqda...</div>
+
+    </div>
+
+</section>
+
+<section class="contact-banner">
+    <h2>O‘zingizga yoqqan telefonni topdingizmi?</h2>
+    <p>Hoziroq buyurtma bering!</p>
+    <a href="tel:+998933402080">93 340 20 80</a>
+</section>
+
+<footer id="contact">
+    <h2>DO‘STLIK<span>.</span></h2>
+    <p>Telefon: <a href="tel:+998933402080">93 340 20 80</a></p>
+    <p>Siz bilan 24 soat ichida bog‘lanamiz!</p>
+    <p class="copyright">© 2026 DO‘STLIK. Barcha huquqlar himoyalangan.</p>
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
