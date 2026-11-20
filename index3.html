@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buyurtma | DO‘STLIK</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <a href="index.html" class="logo">
+        DO‘STLIK<span>.</span>
+    </a>
+
+    <nav class="navbar">
+        <a href="index.html">Bosh sahifa</a>
+        <a href="index2.html">Telefonlar</a>
+        <a href="index.html#about">Biz haqimizda</a>
+        <a href="index.html#contact">Aloqa</a>
+    </nav>
+
+    <a href="index3.html" class="cart active">
+        🛒 Savat <span id="cart-count">0</span>
+    </a>
+
+</header>
+
+<section class="order-hero">
+
+    <p>DO‘STLIK ONLINE STORE</p>
+
+    <h1>BUYURTMANGIZNI <span>RASMIYLASHTIRING</span></h1>
+
+    <p>Tanlagan mahsulotlaringizni tekshiring va buyurtma bering.</p>
+
+</section>
+
+<main class="checkout-container">
+
+    <div class="checkout-left">
+
+        <div class="checkout-card">
+
+            <h2>🛒 Sizning savatingiz</h2>
+
+            <div id="cart-items">
+
+                <p class="empty-cart">
+                    Savatingiz hozircha bo‘sh.
+                    <a href="index2.html">Telefonlarni ko‘rish</a>
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="checkout-card">
+
+            <h2>📦 Karobka tanlang</h2>
+
+            <p class="box-description">
+                Telefoningiz uchun karobka hajmini tanlang.
+            </p>
+
+            <div class="box-options">
+
+                <label class="box-option">
+
+                    <input
+                        type="radio"
+                        name="box"
+                        value="small"
+                        checked
+                    >
+
+                    <div class="box-content">
+                        <span class="box-icon">📦</span>
+                        <h3>Kichik</h3>
+                        <p>15 000 so‘m</p>
+                    </div>
+
+                </label>
+
+                <label class="box-option">
+
+                    <input
+                        type="radio"
+                        name="box"
+                        value="medium"
+                    >
+
+                    <div class="box-content">
+                        <span class="box-icon">📦</span>
+                        <h3>O‘rta</h3>
+                        <p>25 000 so‘m</p>
+                    </div>
+
+                </label>
+
+                <label class="box-option">
+
+                    <input
+                        type="radio"
+                        name="box"
+                        value="large"
+                    >
+
+                    <div class="box-content">
+                        <span class="box-icon">🎁</span>
+                        <h3>Katta</h3>
+                        <p>40 000 so‘m</p>
+                    </div>
+
+                </label>
+
+            </div>
+
+        </div>
+
+        <div class="checkout-card">
+
+            <h2>👤 Xaridor ma'lumotlari</h2>
+
+            <form id="order-form">
+
+                <label for="customer-name">Ism va familiya</label>
+
+                <input
+                    type="text"
+                    id="customer-name"
+                    placeholder="Ismingizni kiriting"
+                    required
+                >
+
+                <label for="customer-phone">Telefon raqamingiz</label>
+
+                <input
+                    type="tel"
+                    id="customer-phone"
+                    placeholder="+998 90 123 45 67"
+                    pattern="^\+?[0-9\s()-]{9,20}$"
+                    required
+                >
+
+                <label for="customer-address">Yetkazib berish manzili</label>
+
+                <textarea
+                    id="customer-address"
+                    placeholder="Manzilingizni kiriting"
+                    rows="4"
+                    required
+                ></textarea>
+
+                <button type="submit" class="order-btn" id="order-button">
+                    BUYURTMA BERISH →
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <aside class="checkout-right">
+
+        <div class="checkout-card summary-card">
+
+            <h2>Buyurtma xulosasi</h2>
+
+            <div class="summary-line">
+                <span>Mahsulotlar:</span>
+                <strong id="products-total">0 so‘m</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Karobka:</span>
+                <strong id="box-total">15 000 so‘m</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Yetkazib berish:</span>
+                <strong id="delivery-total">Kelishiladi</strong>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-final">
+                <span>JAMI:</span>
+                <strong id="grand-total">15 000 so‘m</strong>
+            </div>
+
+            <p class="summary-note">
+                Buyurtmangizni tasdiqlashdan oldin
+                barcha ma'lumotlarni tekshiring.
+            </p>
+
+        </div>
+
+        <div class="checkout-card support-card">
+
+            <span>☎️</span>
+
+            <h3>Yordam kerakmi?</h3>
+
+            <p>Biz bilan bog‘laning:</p>
+
+            <a href="tel:+998933402080">
+                93 340 20 80
+            </a>
+
+            <p>Siz bilan 24 soat ichida bog‘lanamiz!</p>
+
+        </div>
+
+    </aside>
+
+</main>
+
+<!-- BUYURTMA MUVAFFAQIYATLI OYNA -->
+
+<div class="success-overlay" id="success-modal">
+
+    <div class="success-box">
+
+        <div class="success-icon">✓</div>
+
+        <h2>BUYURTMANGIZ QABUL QILINDI!</h2>
+
+        <p>
+            Bizga murojaat qilganingiz uchun rahmat!
+        </p>
+
+        <div class="success-details">
+
+            <p>Buyurtma summasi:</p>
+
+            <h2 id="success-total">0 so‘m</h2>
+
+        </div>
+
+        <p class="success-phone">
+            Telefon:
+            <a href="tel:+998933402080">
+                93 340 20 80
+            </a>
+        </p>
+
+        <p class="success-message">
+            Siz bilan 24 soat ichida bog‘lanamiz!
+        </p>
+
+        <a href="index.html" class="success-btn">
+            Bosh sahifaga qaytish
+        </a>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <h2>DO‘STLIK<span>.</span></h2>
+
+    <p>
+        Telefon:
+        <a href="tel:+998933402080">93 340 20 80</a>
+    </p>
+
+    <p>© 2026 DO‘STLIK. Barcha huquqlar himoyalangan.</p>
+
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
